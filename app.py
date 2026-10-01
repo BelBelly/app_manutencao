@@ -53,5 +53,13 @@ return render_template(
 "index.html",
 solicitacoes=solicitacoes
 )
+@app.route("/cadastrar", methods=["POST"])
+def cadastrar():
+solicitacoes = carregar_solicitacoes()
+nova_solicitacao = {
+"id": gerar_novo_id(solicitacoes),
+"nome": request.form.get( "nome", "" ).strip(),
+"tipo_usuario": request.form.get( "tipo_usuario", "" ).strip(),
+"sala": request.form.get( "sala", "" ).strip(),
 if __name__ == "__main__":
 app.run(debug=True)
